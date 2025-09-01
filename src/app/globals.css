@@ -1,26 +1,218 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Centralized design tokens */
+@theme {
+  /* Base background/foreground */
+  --color-background: #ffffff;
+  /* white */
+  --color-foreground: #0f172a;
+  /* slate-900 */
+  --color-muted: #64748b;
+  /* slate-500 */
+
+  /* Corporate palette */
+  --color-primary: #4f46e5;
+  /* indigo-600 */
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #334155;
+  /* slate-700 */
+  --color-secondary-foreground: #e2e8f0;
+  /* slate-200 */
+
+  --color-accent: #10b981;
+  /* emerald-500 */
+  --color-accent-foreground: #052e1b;
+  /* deep green for contrast */
+
+  /* Surfaces & borders */
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+  --color-muted-bg: #f1f5f9;
+  /* slate-100 */
+  --color-border: #e2e8f0;
+  /* slate-200 */
+
+  /* Status */
+  --color-success: #16a34a;
+  /* green-600 */
+  --color-warning: #f59e0b;
+  /* amber-500 */
+  --color-error: #ef4444;
+  /* red-500 */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Dark scheme overrides */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @theme {
+    --color-background: #020617;
+    /* slate-950 */
+    --color-foreground: #e2e8f0;
+    /* slate-200 */
+    --color-muted: #94a3b8;
+    /* slate-400 */
+
+    --color-primary: #6366f1;
+    /* indigo-500 */
+    --color-primary-foreground: #0b1020;
+    /* deep slate for contrast */
+
+    --color-secondary: #0f172a;
+    /* slate-900 */
+    --color-secondary-foreground: #cbd5e1;
+    /* slate-300 */
+
+    --color-accent: #34d399;
+    /* emerald-400 */
+    --color-accent-foreground: #052e1b;
+
+    --color-card: #0b1020;
+    /* near-surface */
+    --color-card-foreground: #e2e8f0;
+    --color-muted-bg: #0b1220;
+    /* subtle panel */
+    --color-border: #1f2937;
+    /* gray-800 */
+
+    --color-success: #22c55e;
+    /* green-500 */
+    --color-warning: #fbbf24;
+    /* amber-400 */
+    --color-error: #f87171;
+    /* red-400 */
   }
 }
 
+/* Base elements using tokens */
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+/* Infinite Scroll Animation - Apple-style smooth scrolling */
+@keyframes infiniteScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.infinite-scroll-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.infinite-scroll-track {
+  display: flex;
+  width: max-content;
+  animation: infiniteScroll 16s linear infinite;
+  gap: 0;
+  align-items: center;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  padding: 0;
+  margin: 0;
+}
+
+.infinite-scroll-item {
+  flex: none;
+  width: 240px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.logo-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.logo-container:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.logo-image {
+  max-width: 100%;
+  max-height: auto;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.logo-container:hover .logo-image {
+  opacity: 1;
+}
+
+/* Pause animation on hover - Apple-style interaction */
+.infinite-scroll-wrapper:hover .infinite-scroll-track {
+  animation-play-state: paused;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .infinite-scroll-item {
+    width: 160px;
+    height: 100px;
+  }
+
+  .infinite-scroll-track {
+    animation-duration: 15s;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .infinite-scroll-item {
+    width: 140px;
+    height: 80px;
+  }
+
+  .infinite-scroll-track {
+    animation-duration: 12s;
+    gap: 1rem;
+  }
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .infinite-scroll-track {
+    animation-duration: 0.001ms;
+    animation-iteration-count: 1;
+  }
+}
+
+/* Rectangular logo container for References (no crop) */
+.logo-box {
+  width: 100%;
+  height: clamp(48px, 10vw, 84px);
+  /* auto height responsive */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* ensure fill doesn't spill */
+}
+
+.logo-box img {
+  display: block;
+  /* remove inline-gap */
 }
