@@ -1,9 +1,9 @@
 import HeroSection from "@/components/HeroSection";
-import PostCard from "@/components/PostCard";
 import References from "@/components/References";
+import CategoryCard from "@/components/CategoryCard";
 
-async function fetchPosts() {
-  const res = await fetch("http://localhost:3002/api/posts", { cache: "no-store" });
+async function fetchCategories() {
+  const res = await fetch("http://localhost:3002/api/categories", { cache: "no-store" });
   if (!res.ok) return [];
   try {
     return await res.json();
@@ -23,21 +23,20 @@ const demoReferences = [
 ];
 
 export default async function HomePage() {
-  const posts = await fetchPosts();
+  const categories = await fetchCategories();
 
   return (
     <main className="container mx-auto p-4">
       <HeroSection />
       <References references={demoReferences} />
-      <h2 className="text-3xl font-bold my-6">Tüm Postlar</h2>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {posts.length > 0 ? (
-          posts.map((post: any) => <PostCard key={post.id} post={post} />)
+      <h2 className="text-3xl font-bold my-6">Hizmetler</h2>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {categories.length > 0 ? (
+          categories.map((cat: any) => <CategoryCard key={cat.id} category={cat} />)
         ) : (
-          <p>Henüz post bulunmamaktadır.</p>
+          <p>Henüz kategori bulunmamaktadır.</p>
         )}
       </div>
-
     </main>
   );
 }

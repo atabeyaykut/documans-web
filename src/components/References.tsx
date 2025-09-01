@@ -41,9 +41,9 @@ export default function References({ references }: ReferencesProps) {
 
     return (
         // Full-bleed section: span entire viewport width even inside containers
-        <section className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen overflow-hidden bg-[var(--color-muted-bg)] py-10">
+        <section className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen overflow-hidden bg-muted-bg py-10">
             <div className="mx-auto max-w-6xl px-4">
-                <h2 className="text-3xl font-bold mb-8 text-[var(--color-foreground)] text-center">Referanslar</h2>
+                <h2 className="text-3xl font-bold mb-8 text-foreground text-center">Referanslar</h2>
             </div>
             
             {/* Infinite scroll container */}
