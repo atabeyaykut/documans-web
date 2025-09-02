@@ -1,6 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import References from "@/components/References";
 import CategoryCard from "@/components/CategoryCard";
+import WhyUs from "@/components/WhyUs";
 
 async function fetchCategories() {
   const res = await fetch("http://localhost:3002/api/categories", { cache: "no-store" });
@@ -37,6 +38,7 @@ export default async function HomePage() {
           <p>Henüz kategori bulunmamaktadır.</p>
         )}
       </div>
+      <WhyUs />
     </main>
   );
 }
