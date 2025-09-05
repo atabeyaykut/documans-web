@@ -121,7 +121,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
           </defs>
         </svg>
         {/* Center content: percent above icon */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center select-none">
+        <div className="absolute inset-0 flex flex-col items-center justify-center select-none gap-2">
           {showPercent && (
             <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-none">
               {percent}%
