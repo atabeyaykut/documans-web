@@ -5,7 +5,7 @@ interface PostCardProps {
     id: number;
     title: string;
     slug?: string;
-    categories: { id: number; name: string }[];
+    categories?: { id: number; name: string }[];
     created_at: string;
   };
 }
@@ -21,7 +21,7 @@ export default function PostCard({ post }: PostCardProps) {
         {new Date(post.created_at).toLocaleDateString()}
       </p>
       <div className="flex gap-2">
-        {post.categories.map((cat) => (
+        {(post.categories ?? []).map((cat) => (
           <Link
             key={cat.id}
             href={`/categories/${cat.name}`}
@@ -34,3 +34,4 @@ export default function PostCard({ post }: PostCardProps) {
     </div>
   );
 }
+
