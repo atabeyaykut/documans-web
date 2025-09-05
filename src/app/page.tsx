@@ -2,7 +2,7 @@ import HeroSection from "@/components/HeroSection";
 import References from "@/components/References";
 import CategoryCard from "@/components/CategoryCard";
 import WhyUs from "@/components/WhyUs";
-import ProgressShowcase from "@/components/ProgressShowcase";
+import CircularProgressShowcase from "@/components/CircularProgressShowcase";
 import { api } from "@/lib/api";
 
 async function fetchCategories() {
@@ -35,7 +35,7 @@ export default async function HomePage() {
         )}
       </div>
       <WhyUs />
-      <ProgressShowcase />
+      <CircularProgressShowcase />
     </main>
   );
 }

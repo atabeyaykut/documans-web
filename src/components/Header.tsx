@@ -88,6 +88,10 @@ export default function Header() {
 
           {/* Diğer linkler */}
           <Link href="/about" className="hover:text-accent transition-colors">Hakkımızda</Link>
+          <Link href="/faq" className="hover:text-accent transition-colors">SSS</Link>
+          <Link href="/support" className="hover:text-accent transition-colors">İletişim & Destek Talebi</Link>
+          <Link href="/testimonials" className="hover:text-accent transition-colors">Müşteri Yorumları</Link>
+          <Link href="/portfolio" className="hover:text-accent transition-colors">Portföy / Proje Örnekleri</Link>
           <Link href="/contact" className="hover:text-accent transition-colors">İletişim</Link>
         </nav>
       </div>
