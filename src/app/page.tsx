@@ -2,16 +2,11 @@ import HeroSection from "@/components/HeroSection";
 import References from "@/components/References";
 import CategoryCard from "@/components/CategoryCard";
 import WhyUs from "@/components/WhyUs";
+import { api } from "@/lib/api";
 
 async function fetchCategories() {
-  const res = await fetch("http://localhost:3002/api/categories", { cache: "no-store" });
-  if (!res.ok) return [];
-  try {
-    return await res.json();
-  } catch (err) {
-    console.error("JSON parse error:", err);
-    return [];
-  }
+  // Use centralized API (currently mocked) to avoid environment-specific URLs
+  return api.listCategories();
 }
 
 const demoReferences = [

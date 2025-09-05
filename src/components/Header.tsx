@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { api } from "@/lib/api";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -15,17 +16,14 @@ export default function Header() {
     setOpen(true);
     if (!fetchedRef.current) {
       setLoading(true);
-      fetch("http://localhost:3002/api/categories", { cache: "no-store" })
-        .then(async (res) => {
-          if (!res.ok) throw new Error("Kategori alınamadı");
-          return res.json();
-        })
+      api
+        .listCategories()
         .then((data) => {
           setCategories(Array.isArray(data) ? data : []);
           fetchedRef.current = true;
           setError(null);
         })
-        .catch((e) => setError(e.message || "Hata"))
+        .catch((e: any) => setError(e?.message || "Hata"))
         .finally(() => setLoading(false));
     }
   };
