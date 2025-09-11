@@ -5,10 +5,11 @@ const USE_MOCK_DATA = process.env.USE_MOCK_DATA === 'true' || process.env.NODE_E
 const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:3001';
 
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { name: string } }
+  _request: NextRequest,
+  context: { params: Promise<{ name: string }> }
 ) {
-  const categoryName = decodeURIComponent(params.name);
+  const { name } = await context.params;
+  const categoryName = decodeURIComponent(name);
 
   // Use mock data if enabled or in development mode
   if (USE_MOCK_DATA) {
@@ -31,7 +32,6 @@ export async function GET(
         posts
       });
     } catch (error) {
-      console.error('Error with mock category data:', error);
       return NextResponse.json(
         { message: 'Failed to fetch mock category data' },
         { status: 500 }
@@ -61,10 +61,7 @@ export async function GET(
     const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
-    console.error('Error fetching category from backend:', error);
-    
     // Fallback to mock data if backend fails
-    console.log('Falling back to mock data...');
     const category = getCategoryByName(categoryName);
     if (!category) {
       return NextResponse.json(
