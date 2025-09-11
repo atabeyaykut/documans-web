@@ -1,99 +1,124 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { api } from "@/lib/api";
+import { useState } from "react";
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [categories, setCategories] = useState<Array<{ id: number; name: string }>>([]);
-  const fetchedRef = useRef(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  const openMenu = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setOpen(true);
-    if (!fetchedRef.current) {
-      setLoading(true);
-      api
-        .listCategories()
-        .then((data) => {
-          setCategories(Array.isArray(data) ? data : []);
-          fetchedRef.current = true;
-          setError(null);
-        })
-        .catch((e: any) => setError(e?.message || "Hata"))
-        .finally(() => setLoading(false));
-    }
-  };
-
-  const closeMenu = () => {
-    // küçük gecikme ile flicker'ı azalt
-    timeoutRef.current = setTimeout(() => setOpen(false), 120);
-  };
-
-  useEffect(() => () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-  }, []);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-primary text-primary-foreground p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold">
-          <Link href="/">Placeholder</Link>
-        </h1>
-
-        <nav className="flex items-center gap-4">
-          {/* Kategoriler dropdown */}
-          <div
-            className="relative z-10"
-            onMouseEnter={openMenu}
-            onMouseLeave={closeMenu}
-          >
-            <button
-              className="px-2 py-1 rounded hover:text-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-              aria-haspopup="menu"
-              aria-expanded={open}
-            >
-              Kategoriler
-            </button>
-
-            {open && (
-              <div
-                role="menu"
-                aria-label="Kategoriler menüsü"
-                className="absolute left-[-100%] mt-2 w-auto min-w-[18rem] max-w-none rounded-md border border-border bg-card text-foreground shadow-lg"
-                onMouseEnter={() => timeoutRef.current && clearTimeout(timeoutRef.current)}
-              >
-                <div className="p-4 max-h-80 overflow-auto grid [grid-template-columns:max-content] md:[grid-template-columns:max-content_max-content] gap-2">
-                  {loading && <div className="px-3 py-2 text-sm text-muted">Yükleniyor...</div>}
-                  {error && <div className="px-3 py-2 text-sm text-error">{error}</div>}
-                  {!loading && !error && categories.length === 0 && (
-                    <div className="px-3 py-2 text-sm text-muted">Kategori yok</div>
-                  )}
-                  {!loading && !error && categories.map((cat) => (
-                    <Link
-                      key={cat.id}
-                      href={`/categories/${cat.name}`}
-                      className="block rounded px-3 py-2 text-sm hover:bg-muted-bg hover:text-primary transition-colors whitespace-nowrap leading-snug"
-                    >
-                      {cat.name}
-                    </Link>
-                  ))}
-                </div>
+    <header className="bg-white shadow-lg sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-4">
+          {/* Logo */}
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xl">F</span>
               </div>
-            )}
+              <span className="text-2xl font-bold text-gray-900">FinBuzz</span>
+            </Link>
           </div>
 
-          {/* Diğer linkler */}
-          <Link href="/about" className="hover:text-accent transition-colors">Hakkımızda</Link>
-          <Link href="/faq" className="hover:text-accent transition-colors">SSS</Link>
-          <Link href="/support" className="hover:text-accent transition-colors">İletişim & Destek Talebi</Link>
-          <Link href="/testimonials" className="hover:text-accent transition-colors">Müşteri Yorumları</Link>
-          <Link href="/portfolio" className="hover:text-accent transition-colors">Portföy / Proje Örnekleri</Link>
-          <Link href="/contact" className="hover:text-accent transition-colors">İletişim</Link>
-        </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Home
+            </Link>
+            <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              About
+            </Link>
+            <Link href="/services" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Services
+            </Link>
+            <Link href="/portfolio" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Portfolio
+            </Link>
+            <Link href="/testimonials" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Testimonials
+            </Link>
+            <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Contact
+            </Link>
+          </nav>
+
+          {/* CTA Button */}
+          <div className="hidden md:flex items-center space-x-4">
+            <button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+              Get Started
+            </button>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="text-gray-700 hover:text-blue-600 focus:outline-none focus:text-blue-600"
+            >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-gray-200">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              <Link
+                href="/"
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link
+                href="/about"
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                About
+              </Link>
+              <Link
+                href="/services"
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Services
+              </Link>
+              <Link
+                href="/portfolio"
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Portfolio
+              </Link>
+              <Link
+                href="/testimonials"
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Testimonials
+              </Link>
+              <Link
+                href="/contact"
+                className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact
+              </Link>
+              <div className="pt-4">
+                <button className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300">
+                  Get Started
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

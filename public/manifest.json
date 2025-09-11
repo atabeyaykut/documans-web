@@ -1,0 +1,16 @@
+{
+  "name": "FinBuzz - Corporate Business Solutions",
+  "short_name": "FinBuzz",
+  "description": "Empowering businesses with innovative solutions for sustainable growth and digital transformation",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}
