@@ -33,7 +33,7 @@ export default function AboutPage() {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                To empower businesses of all sizes with innovative solutions that drive sustainable growth, optimize operations, and create lasting value in today's rapidly evolving marketplace.
+                To empower businesses of all sizes with innovative solutions that drive sustainable growth, optimize operations, and create lasting value in today&apos;s rapidly evolving marketplace.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 We believe that every business has the potential to achieve extraordinary success with the right guidance, tools, and strategic approach.

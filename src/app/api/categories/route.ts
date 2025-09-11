@@ -4,7 +4,7 @@ import { mockCategories } from '@/lib/mockData';
 const USE_MOCK_DATA = process.env.USE_MOCK_DATA === 'true' || process.env.NODE_ENV === 'development';
 const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:3001';
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   // Use mock data if enabled or in development mode
   if (USE_MOCK_DATA) {
     try {
@@ -12,6 +12,7 @@ export async function GET(request: NextRequest) {
       await new Promise(resolve => setTimeout(resolve, 200));
       return NextResponse.json(mockCategories);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Error with mock categories:', error);
       return NextResponse.json(
         { message: 'Failed to fetch mock categories' },
@@ -36,9 +37,9 @@ export async function GET(request: NextRequest) {
     const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error('Error fetching categories from backend:', error);
     // Fallback to mock data if backend fails
-    console.log('Falling back to mock data...');
     return NextResponse.json(mockCategories);
   }
 }

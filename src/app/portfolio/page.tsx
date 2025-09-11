@@ -61,7 +61,7 @@ export default function PortfolioPage() {
           <div className="text-center">
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">Our Portfolio</h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Discover how we've helped businesses across industries achieve remarkable growth and transformation through our strategic solutions.
+              Discover how we&apos;ve helped businesses across industries achieve remarkable growth and transformation through our strategic solutions.
             </p>
           </div>
         </div>

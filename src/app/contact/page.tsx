@@ -125,7 +125,7 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Get in Touch</h2>
                 <p className="text-lg text-gray-600 mb-8">
-                  We're here to help you transform your business. Reach out to us through any of the channels below.
+                  We&apos;re here to help you transform your business. Reach out to us through any of the channels below.
                 </p>
               </div>
 

@@ -30,7 +30,7 @@ export default function StatsSection() {
             Proven Track Record
           </h2>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            Our numbers speak for themselves. We've helped hundreds of businesses achieve their goals and exceed expectations.
+            Our numbers speak for themselves. We&apos;ve helped hundreds of businesses achieve their goals and exceed expectations.
           </p>
         </div>
         
@@ -57,7 +57,7 @@ export default function StatsSection() {
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold mb-4">Ready to Join Our Success Stories?</h3>
             <p className="text-blue-100 mb-6">
-              Let's discuss how we can help your business achieve similar results and exceed your growth targets.
+              Let&apos;s discuss how we can help your business achieve similar results and exceed your growth targets.
             </p>
             <button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
               Start Your Journey

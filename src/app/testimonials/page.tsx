@@ -71,7 +71,7 @@ export default function TestimonialsPage() {
           <div className="text-center">
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">Client Testimonials</h1>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Don't just take our word for it. Here's what business leaders have to say about their experience working with FinBuzz and the remarkable results they achieved.
+              Don&apos;t just take our word for it. Here&apos;s what business leaders have to say about their experience working with FinBuzz and the remarkable results they achieved.
             </p>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function TestimonialsPage() {
                 
                 {/* Quote */}
                 <blockquote className="text-gray-700 text-lg leading-relaxed mb-8">
-                  "{testimonial.content}"
+                  {testimonial.content}
                 </blockquote>
                 
                 {/* Results */}
