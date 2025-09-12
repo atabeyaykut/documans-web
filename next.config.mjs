@@ -2,7 +2,8 @@
 const nextConfig = {
   // Enable experimental features for better performance
   experimental: {
-    optimizeCss: true,
+    // Disabled to avoid requiring 'critters' in environments where it's not installed (e.g., Amplify build)
+    optimizeCss: false,
   },
   
   // Image optimization
