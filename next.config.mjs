@@ -50,6 +50,27 @@ const nextConfig = {
       },
     ];
   },
+
+  // Redirects for Turkish-friendly URLs and route consolidation
+  async redirects() {
+    return [
+      // Primary: English to Turkish where Turkish page exists
+      { source: '/services', destination: '/kategoriler', permanent: true },
+      { source: '/categories', destination: '/kategoriler', permanent: true },
+
+      // Turkish aliases pointing to existing English pages (until Turkish pages exist)
+      { source: '/hakkimizda', destination: '/about', permanent: true },
+      { source: '/iletisim', destination: '/contact', permanent: true },
+      { source: '/gizlilik', destination: '/privacy', permanent: true },
+      { source: '/kullanim-sartlari', destination: '/terms', permanent: true },
+      { source: '/referanslar', destination: '/testimonials', permanent: true },
+      { source: '/portfolyo', destination: '/portfolio', permanent: true },
+      { source: '/arama', destination: '/search', permanent: true },
+      { source: '/yazilar/:slug', destination: '/posts/:slug', permanent: true },
+      { source: '/etiketler/:tag', destination: '/tags/:tag', permanent: true },
+      { source: '/kategoriler/:id', destination: '/categories/:id', permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

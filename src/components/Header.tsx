@@ -22,29 +22,29 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              Home
+              Ana Sayfa
             </Link>
-            <Link href="/about" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              About
+            <Link href="/hakkimizda" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Hakkımızda
             </Link>
-            <Link href="/services" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              Services
+            <Link href="/kategoriler" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Kategoriler
             </Link>
-            <Link href="/portfolio" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              Portfolio
+            <Link href="/portfolyo" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Portföy
             </Link>
-            <Link href="/testimonials" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              Testimonials
+            <Link href="/referanslar" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              Referanslar
             </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-              Contact
+            <Link href="/iletisim" className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+              İletişim
             </Link>
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
             <button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
-              Get Started
+              Hemen Başla
             </button>
           </div>
 
@@ -74,46 +74,46 @@ export default function Header() {
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Home
+                Ana Sayfa
               </Link>
               <Link
-                href="/about"
+                href="/hakkimizda"
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                About
+                Hakkımızda
               </Link>
               <Link
-                href="/services"
+                href="/kategoriler"
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Services
+                Kategoriler
               </Link>
               <Link
-                href="/portfolio"
+                href="/portfolyo"
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Portfolio
+                Portföy
               </Link>
               <Link
-                href="/testimonials"
+                href="/referanslar"
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Testimonials
+                Referanslar
               </Link>
               <Link
-                href="/contact"
+                href="/iletisim"
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Contact
+                İletişim
               </Link>
               <div className="pt-4">
                 <button className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300">
-                  Get Started
+                  Hemen Başla
                 </button>
               </div>
             </div>

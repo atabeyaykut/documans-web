@@ -32,25 +32,25 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Services */}
+          {/* Kategoriler */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Services</h3>
+            <h3 className="text-lg font-semibold mb-6">Kategoriler</h3>
             <ul className="space-y-3">
-              <li><Link href="/services" className="text-gray-300 hover:text-white transition-colors">Business Strategy</Link></li>
-              <li><Link href="/services" className="text-gray-300 hover:text-white transition-colors">Digital Transformation</Link></li>
-              <li><Link href="/services" className="text-gray-300 hover:text-white transition-colors">Process Optimization</Link></li>
-              <li><Link href="/services" className="text-gray-300 hover:text-white transition-colors">Financial Planning</Link></li>
+              <li><Link href="/kategoriler" className="text-gray-300 hover:text-white transition-colors">Tüm Kategoriler</Link></li>
+              <li><Link href="/kategoriler" className="text-gray-300 hover:text-white transition-colors">Popüler</Link></li>
+              <li><Link href="/kategoriler" className="text-gray-300 hover:text-white transition-colors">Yeni Eklenenler</Link></li>
+              <li><Link href="/kategoriler" className="text-gray-300 hover:text-white transition-colors">Öne Çıkanlar</Link></li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Şirket */}
           <div>
-            <h3 className="text-lg font-semibold mb-6">Company</h3>
+            <h3 className="text-lg font-semibold mb-6">Şirket</h3>
             <ul className="space-y-3">
-              <li><Link href="/about" className="text-gray-300 hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="/portfolio" className="text-gray-300 hover:text-white transition-colors">Portfolio</Link></li>
-              <li><Link href="/testimonials" className="text-gray-300 hover:text-white transition-colors">Testimonials</Link></li>
-              <li><Link href="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
+              <li><Link href="/hakkimizda" className="text-gray-300 hover:text-white transition-colors">Hakkımızda</Link></li>
+              <li><Link href="/portfolyo" className="text-gray-300 hover:text-white transition-colors">Portföy</Link></li>
+              <li><Link href="/referanslar" className="text-gray-300 hover:text-white transition-colors">Referanslar</Link></li>
+              <li><Link href="/iletisim" className="text-gray-300 hover:text-white transition-colors">İletişim</Link></li>
             </ul>
           </div>
 
@@ -80,10 +80,10 @@ export default function Footer() {
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">© {year} FinBuzz. All rights reserved.</p>
+            <p className="text-gray-400 text-sm">© {year} FinBuzz. Tüm hakları saklıdır.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</Link>
-              <Link href="/terms" className="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</Link>
+              <Link href="/gizlilik" className="text-gray-400 hover:text-white text-sm transition-colors">Gizlilik Politikası</Link>
+              <Link href="/kullanim-sartlari" className="text-gray-400 hover:text-white text-sm transition-colors">Kullanım Şartları</Link>
             </div>
           </div>
         </div>

@@ -60,11 +60,12 @@ export default function KategorilerPage() {
   }
 
   return (
-    <main className="mx-auto max-w-7xl px-6 py-10">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Kategoriler</h1>
-        <p className="text-muted-foreground">
-          Tüm kategoriler ve her kategorideki yazı sayıları
+    <div className="bg-gray-50">
+    <main className="mx-auto max-w-7xl px-6 py-14">
+      <div className="mb-12 text-center">
+        <h1 className="text-4xl font-bold mb-3 tracking-tight text-gray-900">Kategoriler</h1>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          İlgi alanına göre kategorileri keşfet, yeni içerikleri yakala ve koleksiyonları incele.
         </p>
       </div>
 
@@ -75,42 +76,72 @@ export default function KategorilerPage() {
           </div>
         </div>
       ) : (
-        <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
+        <div className="grid gap-8 grid-cols-2">
           {categories.map((category) => (
             <Link
               key={category.id}
               href={`/categories/${encodeURIComponent(category.name)}`}
-              className="group block relative h-80 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]"
+              className="group block relative h-44 rounded-2xl overflow-hidden bg-white border border-gray-200 hover:border-blue-500/60 shadow-sm hover:shadow-lg transition-all duration-300"
             >
-              {/* Background Image */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              {/* Hover Background Image (hidden by default) */}
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 style={{
-                  backgroundImage: `url(${category.background_image || 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=400&fit=crop&crop=center'})`
+                  backgroundImage: `url(${category.background_image ? category.background_image : 'https://picsum.photos/seed/' + encodeURIComponent(category.name) + '/800/400'})`,
                 }}
               />
-              
-              {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all duration-300" />
-              
-              {/* Content */}
-              <div className="relative h-full flex flex-col justify-between p-8 text-white">
-                <div className="flex items-start justify-between">
-                  <h2 className="text-4xl font-bold text-white drop-shadow-lg">
-                    {category.name}
-                  </h2>
-                  <span className="bg-white/20 backdrop-blur-sm text-white px-5 py-3 rounded-full text-lg font-medium">
-                    {category.post_count} yazı
-                  </span>
+
+              {/* Dark overlay only on hover for readability */}
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              {/* Brand gradient tint on hover to match homepage */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-cyan-500/40 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              {/* Gradient glow on hover */}
+              <div className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                   style={{
+                     background: 'linear-gradient(135deg, rgba(37,99,235,0.35), rgba(6,182,212,0.35))'
+                   }}
+              />
+
+              {/* Foreground content */}
+              <div className="relative z-10 h-full flex items-center p-6">
+                <div className="flex w-full items-center gap-6">
+                  {/* Icon area - 1/4 width */}
+                  <div className="basis-1/4 shrink-0 flex items-center justify-center">
+                    <div className="size-16 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 text-white flex items-center justify-center shadow-lg shadow-blue-600/20">
+                      {/* Folder icon */}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="size-7"
+                      >
+                        <path d="M9.707 4.293A1 1 0 0 0 9 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7a1 1 0 0 1-.707-.293l-1.586-1.586Z" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Text area - 3/4 width */}
+                  <div className="basis-3/4">
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <h2 className="text-xl font-semibold text-gray-900 group-hover:text-white transition-colors">
+                          {category.name}
+                        </h2>
+                        <p className="mt-1 text-sm text-gray-600 group-hover:text-white/80 transition-colors">
+                          {category.post_count} yazı
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                
-                {/* Bottom gradient for better text readability */}
-                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
               </div>
             </Link>
-          ))}
-        </div>
-      )}
-    </main>
+            ))}
+          </div>
+        )}
+      </main>
+    </div>
   );
 }
