@@ -48,7 +48,7 @@ export default function TermsPage() {
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-3">4. Disclaimer</h2>
             <p className="text-gray-700 leading-relaxed">
-              Our services are provided on an "as-is" and "as-available" basis without warranties of any kind, to the fullest extent permitted by law.
+              Our services are provided on an &quot;as-is&quot; and &quot;as-available&quot; basis without warranties of any kind, to the fullest extent permitted by law.
             </p>
           </div>
 

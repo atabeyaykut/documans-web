@@ -31,7 +31,7 @@ export async function GET(
         category,
         posts
       });
-    } catch (error) {
+    } catch {
       return NextResponse.json(
         { message: 'Failed to fetch mock category data' },
         { status: 500 }
@@ -60,7 +60,7 @@ export async function GET(
 
     const data = await response.json();
     return NextResponse.json(data);
-  } catch (error) {
+  } catch {
     // Fallback to mock data if backend fails
     const category = getCategoryByName(categoryName);
     if (!category) {

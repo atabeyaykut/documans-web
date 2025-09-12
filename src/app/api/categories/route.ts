@@ -13,7 +13,7 @@ export async function GET(_request: NextRequest) {
       // Simulate network delay for realistic testing
       await new Promise(resolve => setTimeout(resolve, 200));
       return NextResponse.json(mockCategories);
-    } catch (error) {
+    } catch {
       // Return a generic error without logging to console to satisfy lint rules
       return NextResponse.json(
         { message: 'Failed to fetch mock categories' },
@@ -37,7 +37,7 @@ export async function GET(_request: NextRequest) {
 
     const data = await response.json();
     return NextResponse.json(data);
-  } catch (error) {
+  } catch {
     // Fallback to mock data if backend fails
     return NextResponse.json(mockCategories);
   }
